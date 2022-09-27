@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+cpu = 1
+ram = 1024
+Vagrant.configure("2") do |config|
+  config.vm.define "srvnginx" do |web|
+    web.vm.box = "yannhunter/nginx"
+    web.vm.box_version = "1.0"
+    web.vm.hostname = "serveurnginx"
+    web.vm.network "private_network", ip: "10.0.0.10"
+    web.vm.synced_folder "Cards-de-prix/", "/usr/share/nginx/html"
+    web.vm.provider "virtualbox" do |v|
+      v.memory = ram
+      v.cpus = cpu
+    end
+  end
+end

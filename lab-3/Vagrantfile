@@ -1,0 +1,11 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+vmcpu=(ENV['VPP_VAGRANT_VMCPU'] || 2)
+vmram=(ENV['VPP_VAGRANT_VMRAM'] || 2048) 
+Vagrant.configure("2") do |config|
+  config.vm.box = "geerlingguy/centos7"
+  config.vm.provider "virtualbox" do |v|
+    v.memory = "#{vmram}"
+    v.cpus = "#{vmcpu}"
+  end
+end

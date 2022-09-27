@@ -1,0 +1,13 @@
+ # -*- mode: ruby -*-
+# vi: set ft=ruby :
+vmcpu = 2
+vmram = 2048
+adrip = "10.0.0.10"
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.network "private_network", ip: adrip
+  config.vm.provider "virtualbox" do |v|
+    v.memory = vmram
+    v.cpus = vmcpu
+  end
+end
